@@ -18,5 +18,10 @@ namespace network_or_something
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
