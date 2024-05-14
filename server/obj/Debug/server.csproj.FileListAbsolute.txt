@@ -1,0 +1,10 @@
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.csproj.AssemblyReference.cache
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.Server.resources
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.Properties.Resources.resources
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.csproj.GenerateResource.cache
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.csproj.CoreCompileInputs.cache
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\bin\Debug\server.exe.config
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\bin\Debug\server.exe
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\bin\Debug\server.pdb
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.exe
+C:\Users\Elev\Documents\Visual Studio 2022\bottle-necc\network-or-something\server\obj\Debug\server.pdb

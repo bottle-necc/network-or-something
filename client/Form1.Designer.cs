@@ -34,6 +34,8 @@
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblProgram = new System.Windows.Forms.Label();
+            this.tbxUserID = new System.Windows.Forms.TextBox();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSend
@@ -61,10 +63,11 @@
             this.btnConnect.TabIndex = 9;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // tbxAddress
             // 
-            this.tbxAddress.Location = new System.Drawing.Point(161, 66);
+            this.tbxAddress.Location = new System.Drawing.Point(161, 52);
             this.tbxAddress.Name = "tbxAddress";
             this.tbxAddress.Size = new System.Drawing.Size(100, 22);
             this.tbxAddress.TabIndex = 8;
@@ -72,7 +75,7 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(82, 69);
+            this.lblAddress.Location = new System.Drawing.Point(82, 55);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(77, 16);
             this.lblAddress.TabIndex = 7;
@@ -88,11 +91,29 @@
             this.lblProgram.TabIndex = 6;
             this.lblProgram.Text = "Client";
             // 
+            // tbxUserID
+            // 
+            this.tbxUserID.Location = new System.Drawing.Point(161, 80);
+            this.tbxUserID.Name = "tbxUserID";
+            this.tbxUserID.Size = new System.Drawing.Size(100, 22);
+            this.tbxUserID.TabIndex = 13;
+            // 
+            // lblUserID
+            // 
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Location = new System.Drawing.Point(104, 83);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(55, 16);
+            this.lblUserID.TabIndex = 12;
+            this.lblUserID.Text = "User ID:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 450);
+            this.Controls.Add(this.tbxUserID);
+            this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnConnect);
@@ -114,6 +135,8 @@
         private System.Windows.Forms.TextBox tbxAddress;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblProgram;
+        private System.Windows.Forms.TextBox tbxUserID;
+        private System.Windows.Forms.Label lblUserID;
     }
 }
 
