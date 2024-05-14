@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace network_or_something.Properties
+namespace Client.Properties
 {
 
 
