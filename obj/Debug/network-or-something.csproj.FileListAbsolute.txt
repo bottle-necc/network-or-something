@@ -1,0 +1,10 @@
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\bin\Debug\network-or-something.exe.config
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\bin\Debug\network-or-something.exe
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\bin\Debug\network-or-something.pdb
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network-or-something.csproj.AssemblyReference.cache
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network_or_something.Form1.resources
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network_or_something.Properties.Resources.resources
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network-or-something.csproj.GenerateResource.cache
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network-or-something.csproj.CoreCompileInputs.cache
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network-or-something.exe
+C:\Users\reza.gowharvarhaghi\Desktop\Programmering\prog2\exercises\2024\network-or-something\obj\Debug\network-or-something.pdb
