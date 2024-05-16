@@ -58,7 +58,7 @@ namespace server
             }
             catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
 
-            tbxInbox.AppendText(Encoding.Unicode.GetString(buffer, 0, n));
+            tbxInbox.AppendText(Encoding.Unicode.GetString(buffer, 0, n) + Environment.NewLine);
 
             StartListening(client);
         }

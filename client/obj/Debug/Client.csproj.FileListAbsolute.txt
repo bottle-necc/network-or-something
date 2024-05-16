@@ -1,0 +1,10 @@
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\bin\Debug\Client.exe.config
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\bin\Debug\Client.exe
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\bin\Debug\Client.pdb
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.Form1.resources
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.exe
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.pdb
