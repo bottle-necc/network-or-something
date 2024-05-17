@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
+
+// IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
 namespace server
 {
@@ -16,6 +19,7 @@ namespace server
     {
         TcpListener _listener;
         TcpClient _client;
+        List<TcpClient> _clients = new List<TcpClient>();
         int port = 12345;
 
         public Server()
@@ -44,6 +48,12 @@ namespace server
             }
             catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
 
+            if (!_clients.Contains(_client))
+            {
+                _clients.Add(_client);
+            }
+
+            StartInput();
             StartListening(_client);
         }
 
@@ -59,6 +69,11 @@ namespace server
             catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
 
             tbxInbox.AppendText(Encoding.Unicode.GetString(buffer, 0, n) + Environment.NewLine);
+
+            foreach (TcpClient i in _clients)
+            {
+                Console.WriteLine(i.ToString());
+            }
 
             StartListening(client);
         }

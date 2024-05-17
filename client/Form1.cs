@@ -16,7 +16,7 @@ namespace Client
     public partial class Form1 : Form
     {
         TcpClient _client = new TcpClient();
-        string _userID = "";
+        public string _userID = "";
         int port = 12345;
 
         public Form1()
@@ -47,6 +47,8 @@ namespace Client
             tbxUserID.Enabled = false;
             btnConnect.Enabled = false;
             btnSend.Enabled = true;
+
+            Send($"{_userID} has connected!");
         }
 
         private void btnSend_Click(object sender, EventArgs e)
