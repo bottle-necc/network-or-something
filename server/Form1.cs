@@ -13,6 +13,9 @@ using System.Diagnostics;
 
 // IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
+// TODO: Revamp the client list and turn it into a class that stores both the tcp and the user id for future use
+// Each client is an object of that class
+
 namespace server
 {
     public partial class Server : Form
