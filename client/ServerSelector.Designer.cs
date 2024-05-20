@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Login = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Login
+            // btnLogin
             // 
-            this.Login.Location = new System.Drawing.Point(53, 51);
-            this.Login.Margin = new System.Windows.Forms.Padding(2);
-            this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(56, 19);
-            this.Login.TabIndex = 12;
-            this.Login.Text = "Login";
-            this.Login.UseVisualStyleBackColor = true;
+            this.btnLogin.Location = new System.Drawing.Point(53, 51);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(56, 19);
+            this.btnLogin.TabIndex = 12;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // tbxAddress
             // 
-            this.tbxAddress.Location = new System.Drawing.Point(80, 16);
+            this.tbxAddress.Location = new System.Drawing.Point(77, 16);
             this.tbxAddress.Margin = new System.Windows.Forms.Padding(2);
             this.tbxAddress.Name = "tbxAddress";
             this.tbxAddress.Size = new System.Drawing.Size(150, 20);
@@ -56,7 +57,7 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(15, 19);
+            this.lblAddress.Location = new System.Drawing.Point(12, 19);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(61, 13);
@@ -72,18 +73,19 @@
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // Form1
+            // ServerSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 81);
+            this.ClientSize = new System.Drawing.Size(238, 81);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.Login);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxAddress);
             this.Controls.Add(this.lblAddress);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Name = "ServerSelector";
             this.Text = "ServerSelector";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,7 +94,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Login;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbxAddress;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Button btnRegister;
