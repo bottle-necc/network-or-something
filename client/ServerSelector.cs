@@ -60,6 +60,8 @@ namespace Client
                 // Connects to the attributed server
                 address = IPAddress.Parse(tbxAddress.Text);
                 await client.ConnectAsync(address, port);
+
+                ServerConnection.Client = client;
             }
             catch (Exception ex) 
             { 

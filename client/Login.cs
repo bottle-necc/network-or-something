@@ -22,11 +22,4 @@ namespace Client
 
         }
     }
-
-    public enum RequestType
-    {
-        Login,
-        LoginSuccess,
-        LoginFail,
-    }
 }
