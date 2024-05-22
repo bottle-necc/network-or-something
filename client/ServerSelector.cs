@@ -15,9 +15,10 @@ namespace Client
 {
     public partial class ServerSelector : Form
     {
-        TcpClient client = new TcpClient();
-        IPAddress address;
-        int port = 12345;
+        private TcpClient _client = new TcpClient();
+        private IPAddress _address;
+        private int _port = 12345;
+        private bool _hasLoaded = false;
 
         public ServerSelector()
         {
@@ -26,28 +27,44 @@ namespace Client
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            bool hasLoaded = false;
+            
 
             StartConnecting();
             
             // Keeps the form from loading next window until a connection has been made
-            while (!client.Connected)
+            while (!_client.Connected)
             {
                 await Task.Delay(1000);
             }
 
-            if (!hasLoaded)
+            // Loads the next window, also prevents bug that causes window to load twice
+            if (!_hasLoaded)
             {
                 this.Hide();
-                hasLoaded = true;
+                _hasLoaded = true;
                 Login login = new Login();
                 login.ShowDialog();
             }
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private async void btnRegister_Click(object sender, EventArgs e)
         {
             StartConnecting();
+            
+            // Keeps the form from loading next window until a connection has been made
+            while (!_client.Connected)
+            {
+                await Task.Delay(1000);
+            }
+
+            // Loads the next window, also prevents bug that causes window to load twice
+            if (!_hasLoaded)
+            {
+                this.Hide();
+                _hasLoaded = true;
+                MainProgram mainProgram = new MainProgram(_client);
+                mainProgram.ShowDialog();
+            }
         }
 
         public async void StartConnecting()
@@ -58,10 +75,8 @@ namespace Client
                 btnRegister.Enabled = false;
 
                 // Connects to the attributed server
-                address = IPAddress.Parse(tbxAddress.Text);
-                await client.ConnectAsync(address, port);
-
-                ServerConnection.Client = client;
+                _address = IPAddress.Parse(tbxAddress.Text);
+                await _client.ConnectAsync(_address, _port);
             }
             catch (Exception ex) 
             { 

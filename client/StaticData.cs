@@ -10,11 +10,6 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 
-public static class ServerConnection
-{
-    public static TcpClient Client { get; set; }
-}
-
 public enum RequestType
 {
     // Sends message to all connected clients

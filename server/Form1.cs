@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
+using System.IO;
 
 // IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
@@ -20,10 +21,12 @@ namespace server
 {
     public partial class Server : Form
     {
-        TcpListener _listener;
-        TcpClient _client;
-        List<TcpClient> _clients = new List<TcpClient>();
-        int port = 12345;
+        private TcpListener _listener;
+        private TcpClient _client;
+        private List<TcpClient> _clients = new List<TcpClient>();
+        private int _port = 12345;
+        private StreamReader _reader;
+        private StreamWriter _writer;
 
         public Server()
         {
@@ -34,7 +37,7 @@ namespace server
         {
             try
             {
-                _listener = new TcpListener(IPAddress.Any, port);
+                _listener = new TcpListener(IPAddress.Any, _port);
                 _listener.Start();
             }
             catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
@@ -73,12 +76,20 @@ namespace server
 
             tbxInbox.AppendText(Encoding.Unicode.GetString(buffer, 0, n) + Environment.NewLine);
 
-            foreach (TcpClient i in _clients)
-            {
-                Console.WriteLine(i.ToString());
-            }
-
             StartListening(client);
+        }
+    }
+
+    // Class consisting of common client properties
+    public class ConnectedClient
+    {
+        public TcpClient Client;
+        public string UserID;
+
+        public ConnectedClient(TcpClient client, string userID)
+        {
+            Client = client;
+            UserID = userID;
         }
     }
 }
