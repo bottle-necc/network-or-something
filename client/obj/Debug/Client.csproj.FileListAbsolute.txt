@@ -10,3 +10,6 @@ C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Cli
 C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.ServerSelector.resources
 C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.Login.resources
 C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.MainProgram.resources
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.csproj.CopyComplete

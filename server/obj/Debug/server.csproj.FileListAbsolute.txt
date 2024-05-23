@@ -18,3 +18,6 @@ C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\ser
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\server.csproj.CoreCompileInputs.cache
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\server.exe
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\server.pdb
+C:\Users\Reza\Programming\school-stuff\network-or-something\server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Reza\Programming\school-stuff\network-or-something\server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\server.csproj.CopyComplete

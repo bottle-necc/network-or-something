@@ -10,24 +10,12 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 
+// Enumerator of all types of requests
 public enum RequestType
 {
-    // Sends message to all connected clients
-    Message,
-
-    // Sends message to specified client
+    Broadcast,
     Whisper,
-
-    // Sent while a client logs in
     Login,
-    LoginSuccess,
-    LoginError,
-
-    // Sent while a client registers
     Register,
-    RegisterSuccess,
-    RegisterError,
-
-    // Commands
-
+    Command
 }

@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.IO;
+using Newtonsoft.Json;
 
 // IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
@@ -68,12 +69,18 @@ namespace server
                 {
                     while (client.Client.Connected)
                     {
-                        string message = await reader.ReadLineAsync();
+                        // Collects package and prepares it for interpretation
+                        string delivery = await reader.ReadLineAsync();
+                        var package = JsonConvert.DeserializeObject<Package>(delivery);
+                        string message = package.data.ToString();
 
-                        // TODO: have an if that checks the request type and calls different function depending on said type
+                        // If the client sent a broadcast package, broadcast the data inside
+                        if (package.requestType == RequestType.Broadcast)
+                        {
+                            Broadcast(message);
+                        }                        
 
-                        Broadcast(message);
-
+                        // if the package is null (i.e client disconnected) then safely handle the disconnect
                         if (message == null)
                         {
                             tbxInbox.Text = "Client Disconnected";
@@ -93,7 +100,7 @@ namespace server
             catch (Exception ex) { MessageBox.Show(ex.Message, "Reading Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
-        // Sends a message to every connected client
+        // Sends a message to every connected client, including the one that sent the message
         public async void Broadcast(string message)
         {
             try
@@ -121,5 +128,23 @@ namespace server
             Writer = new StreamWriter(Client.GetStream(), Encoding.Unicode);
             //UserID = userID;
         }
+    }
+
+    // Class consisting of the parts in a package. (I also break a C# rule by camelCasing the public fields, it's to prevent problems from overlapping variables etc)
+    public class Package
+    {
+        public string data {  get; set; }
+        public RequestType requestType { get; set; }
+        public string loginResult { get; set; }
+    }
+
+    // Enumerator of all types of requests
+    public enum RequestType
+    {
+        Broadcast,
+        Whisper,
+        Login,
+        Register,
+        Command
     }
 }

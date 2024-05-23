@@ -27,8 +27,6 @@ namespace Client
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            
-
             StartConnecting();
             
             // Keeps the form from loading next window until a connection has been made
