@@ -22,74 +22,104 @@ namespace server
     public partial class Server : Form
     {
         private TcpListener _listener;
-        private TcpClient _client;
-        private List<TcpClient> _clients = new List<TcpClient>();
+        private List<ConnectedClient> _clientList = new List<ConnectedClient>();
         private int _port = 12345;
-        private StreamReader _reader;
-        private StreamWriter _writer;
 
         public Server()
         {
             InitializeComponent();
         }
 
-        private void btnStartServer_Click(object sender, EventArgs e)
+        private async void btnStartServer_Click(object sender, EventArgs e)
         {
             try
             {
                 _listener = new TcpListener(IPAddress.Any, _port);
                 _listener.Start();
-            }
-            catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
+            
 
-            btnStartServer.Enabled = false;
-            StartInput();
+                btnStartServer.Enabled = false;
+
+                while (true)
+                {
+                    TcpClient client = await _listener.AcceptTcpClientAsync();
+
+                    ConnectedClient connectedClient = new ConnectedClient(client);
+
+                    // Prevents multiple threads from running this code block at the same time
+                    lock (_clientList) 
+                    {
+                        _clientList.Add(connectedClient);
+                    }
+
+                    // Runs a new thread with the assigned client
+                    await Task.Run(() => StartListening(connectedClient));
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
-        public async void StartInput()
+        // Listens for new messages
+        public async void StartListening(ConnectedClient client)
         {
             try
             {
-                _client = await _listener.AcceptTcpClientAsync();
-            }
-            catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
+                using (StreamReader reader = new StreamReader(client.Client.GetStream(), Encoding.Unicode))
+                {
+                    while (client.Client.Connected)
+                    {
+                        string message = await reader.ReadLineAsync();
 
-            if (!_clients.Contains(_client))
-            {
-                _clients.Add(_client);
-            }
+                        // TODO: have an if that checks the request type and calls different function depending on said type
 
-            StartInput();
-            StartListening(_client);
+                        Broadcast(message);
+
+                        if (message == null)
+                        {
+                            tbxInbox.Text = "Client Disconnected";
+
+                            lock (_clientList)
+                            {
+                                _clientList.Remove(client);
+                            }
+
+                            break;
+                        }
+
+                        tbxInbox.Text += message + Environment.NewLine;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Reading Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
-        public async void StartListening(TcpClient client)
+        // Sends a message to every connected client
+        public async void Broadcast(string message)
         {
-            byte[] buffer = new byte[1024];
-            int n = 0;
-
             try
             {
-                n = await client.GetStream().ReadAsync(buffer, 0, buffer.Length);
+                foreach (ConnectedClient client in _clientList)
+                {
+                    await client.Writer.WriteLineAsync(message);
+                    client.Writer.Flush();
+                }
             }
-            catch (Exception error) { MessageBox.Show(error.Message, Text); return; }
-
-            tbxInbox.AppendText(Encoding.Unicode.GetString(buffer, 0, n) + Environment.NewLine);
-
-            StartListening(client);
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Broadcasting Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
     }
 
-    // Class consisting of common client properties
+    // Class consisting of common client properties and functions
     public class ConnectedClient
     {
         public TcpClient Client;
-        public string UserID;
+        public StreamWriter Writer;
+        //public string UserID;
 
-        public ConnectedClient(TcpClient client, string userID)
+        public ConnectedClient(TcpClient client/*, string userID*/)
         {
             Client = client;
-            UserID = userID;
+            Writer = new StreamWriter(Client.GetStream(), Encoding.Unicode);
+            //UserID = userID;
         }
     }
 }
