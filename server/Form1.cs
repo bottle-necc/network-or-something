@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 // IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
@@ -24,11 +25,35 @@ namespace server
     {
         private TcpListener _listener;
         private List<ConnectedClient> _clientList = new List<ConnectedClient>();
+        private string _loginDataPath = $"{Directory.GetCurrentDirectory()}/loginData.json";
         private int _port = 12345;
+        private JObject _loginData = new JObject();
 
         public Server()
         {
             InitializeComponent();
+            CheckForJson();
+        }
+
+        // Checks and loads the loginData file. Creates a new one if its missing.
+        public void CheckForJson()
+        {
+            try
+            {
+                if (File.Exists(_loginDataPath))
+                {
+                    // Reads all the data in the file and stores it
+                    string strData = File.ReadAllText(_loginDataPath);
+                    _loginData = JObject.Parse(strData);
+                }
+                else
+                {
+                    // If the file is missing, create a new one
+                    MessageBox.Show("There was a problem loading the login data file. It may have been moved, corrupted or destroyed. A new one will be generated", "Missing File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    using (StreamWriter w = new StreamWriter(_loginDataPath)) { w.Write("{}"); }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
         }
 
         private async void btnStartServer_Click(object sender, EventArgs e)
