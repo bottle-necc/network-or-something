@@ -58,10 +58,10 @@ namespace Client
                     data = message
                 };
                 
-                string strPackage = JsonConvert.SerializeObject(package);
+                string delivery = JsonConvert.SerializeObject(package);
 
                 // Sends the message
-                await _writer.WriteLineAsync(strPackage);
+                await _writer.WriteLineAsync(delivery);
                 _writer.Flush();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Delivering Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }

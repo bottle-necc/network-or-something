@@ -95,16 +95,26 @@ namespace server
                 {
                     while (client.Client.Connected)
                     {
+                        string message = "";
+
                         // Collects package and prepares it for interpretation
                         string delivery = await reader.ReadLineAsync();
                         var package = JsonConvert.DeserializeObject<Package>(delivery);
-                        string message = package.data.ToString();
+                        
+                        if (package.data != null)
+                        {
+                           message = package.data.ToString();
+                        }
 
                         // If the client sent a broadcast package, broadcast the data inside
                         if (package.requestType == RequestType.Broadcast)
                         {
                             Broadcast(message);
-                        }                        
+                        }
+                        else if (package.requestType == RequestType.Login)
+                        {
+                            Login(client, package.userID, package.password);
+                        }
 
                         // if the package is null (i.e client disconnected) then safely handle the disconnect
                         if (message == null)
@@ -139,6 +149,18 @@ namespace server
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Broadcasting Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
+
+        // Handles the client login procedure
+        public async void Login(ConnectedClient client, string userID, string password)
+        {
+            // Compare the given values with the ones in the json file. if they are the same then send a success ping. else send a fail ping and ask for a retry
+        }
+
+        // Handles the client register procedure
+        public async void Register(ConnectedClient client, string userID, string password)
+        {
+
+        }
     }
 
     // Class consisting of common client properties and functions
@@ -146,7 +168,7 @@ namespace server
     {
         public TcpClient Client;
         public StreamWriter Writer;
-        //public string UserID;
+        public string UserID;
 
         public ConnectedClient(TcpClient client)
         {
@@ -158,8 +180,10 @@ namespace server
     // Class consisting of the parts in a package. (I also break a C# rule by camelCasing the public fields, it's to prevent problems from overlapping variables etc)
     public class Package
     {
-        public string data {  get; set; }
         public RequestType requestType { get; set; }
+        public string data {  get; set; }
+        public string userID { get; set; }
+        public string password { get; set; }
         public string loginResult { get; set; }
     }
 

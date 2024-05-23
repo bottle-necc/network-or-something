@@ -41,7 +41,7 @@ namespace Client
             {
                 this.Hide();
                 _hasLoaded = true;
-                Login login = new Login();
+                Login login = new Login(_client);
                 login.ShowDialog();
             }
         }
