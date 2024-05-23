@@ -23,6 +23,7 @@ namespace Client
         public ServerSelector()
         {
             InitializeComponent();
+            this.FormClosing += ApplicationExitHandler.OnWindowClosing;
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)

@@ -32,6 +32,8 @@
             this.btnBroadcast = new System.Windows.Forms.Button();
             this.lblInbox = new System.Windows.Forms.Label();
             this.tbxBroadcast = new System.Windows.Forms.TextBox();
+            this.btnWhisper = new System.Windows.Forms.Button();
+            this.btnDisconnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbxInbox
@@ -78,11 +80,31 @@
             this.tbxBroadcast.MouseEnter += new System.EventHandler(this.tbxBroadcast_MouseEnter);
             this.tbxBroadcast.MouseLeave += new System.EventHandler(this.tbxBroadcast_MouseLeave);
             // 
+            // btnWhisper
+            // 
+            this.btnWhisper.Location = new System.Drawing.Point(122, 326);
+            this.btnWhisper.Name = "btnWhisper";
+            this.btnWhisper.Size = new System.Drawing.Size(75, 23);
+            this.btnWhisper.TabIndex = 4;
+            this.btnWhisper.Text = "Whisper";
+            this.btnWhisper.UseVisualStyleBackColor = true;
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Location = new System.Drawing.Point(231, 326);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(75, 23);
+            this.btnDisconnect.TabIndex = 5;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            // 
             // MainProgram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 361);
+            this.Controls.Add(this.btnDisconnect);
+            this.Controls.Add(this.btnWhisper);
             this.Controls.Add(this.tbxBroadcast);
             this.Controls.Add(this.lblInbox);
             this.Controls.Add(this.btnBroadcast);
@@ -100,5 +122,7 @@
         private System.Windows.Forms.Button btnBroadcast;
         private System.Windows.Forms.Label lblInbox;
         private System.Windows.Forms.TextBox tbxBroadcast;
+        private System.Windows.Forms.Button btnWhisper;
+        private System.Windows.Forms.Button btnDisconnect;
     }
 }

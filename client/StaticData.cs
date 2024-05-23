@@ -19,3 +19,12 @@ public enum RequestType
     Register,
     Command
 }
+
+// Closes application when called (I.E when a program window is closed)
+public static class ApplicationExitHandler
+{
+    public static void OnWindowClosing(object sender, FormClosingEventArgs e)
+    {
+        Application.Exit();
+    }
+}

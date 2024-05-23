@@ -26,6 +26,9 @@ namespace Client
         public MainProgram(TcpClient client)
         {
             InitializeComponent();
+            this.FormClosing += ApplicationExitHandler.OnWindowClosing;
+
+            // Assigns the fields with the given values
             _client = client;
             _reader = new StreamReader(_client.GetStream(), Encoding.Unicode);
             _writer = new StreamWriter(_client.GetStream(), Encoding.Unicode);

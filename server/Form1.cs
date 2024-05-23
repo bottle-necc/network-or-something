@@ -41,6 +41,7 @@ namespace server
 
                 btnStartServer.Enabled = false;
 
+                // Accepts new client connections and runs a new thread for the specific client
                 while (true)
                 {
                     TcpClient client = await _listener.AcceptTcpClientAsync();
@@ -60,7 +61,7 @@ namespace server
             catch (Exception ex) { MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
-        // Listens for new messages
+        // Listens for new messages from assigned client
         public async void StartListening(ConnectedClient client)
         {
             try
@@ -122,11 +123,10 @@ namespace server
         public StreamWriter Writer;
         //public string UserID;
 
-        public ConnectedClient(TcpClient client/*, string userID*/)
+        public ConnectedClient(TcpClient client)
         {
             Client = client;
             Writer = new StreamWriter(Client.GetStream(), Encoding.Unicode);
-            //UserID = userID;
         }
     }
 
