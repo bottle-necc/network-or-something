@@ -42,7 +42,7 @@ namespace Client
                     btnLogin.Enabled = false;
 
                     // Creates a new package with the login request
-                    var package = new
+                    Package package = new Package
                     {
                         requestType = RequestType.Login,
                         userID = tbxUserID.Text,
@@ -84,7 +84,7 @@ namespace Client
                         mainProgram.ShowDialog();
                     });
                 }
-                if (package.loginResult == "Incorrect")
+                else if (package.loginResult == "Incorrect")
                 {
                     MessageBox.Show("Incorrect username or password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnLogin.Enabled = true;

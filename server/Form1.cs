@@ -88,9 +88,9 @@ namespace server
         {
             try
             {
-                using (StreamReader reader = new StreamReader(client.Client.GetStream(), Encoding.Unicode))
+                using (StreamReader reader = new StreamReader(client.Tcp.GetStream(), Encoding.Unicode))
                 {
-                    while (client.Client.Connected)
+                    while (client.Tcp.Connected)
                     {
                         string message = "";
 
@@ -119,6 +119,10 @@ namespace server
                         else if (package.requestType == RequestType.Login)
                         {
                             Login(client, package.userID, package.password);
+                        }
+                        else if (package.requestType == RequestType.Register)
+                        {
+                            Register(client, package.userID, package.password);
                         }
 
                         // if the package is null (i.e client disconnected) then safely handle the disconnect
@@ -173,6 +177,8 @@ namespace server
             {
                 if (!_loginData.ContainsKey(userID))
                 {
+                    // Alerts the user that the account info is incorrect
+
                     // Preparing the package with response
                     Package package = new Package
                     {
@@ -187,6 +193,8 @@ namespace server
                 }
                 else if (_loginData[userID].ToString() != password)
                 {
+                    // Alerts the user that the account info is incorrect
+
                     // Preparing the package with response
                     Package package = new Package
                     {
@@ -201,6 +209,8 @@ namespace server
                 }
                 else if (_loginData[userID].ToString() == password)
                 {
+                    // Alerts the client that the account info is correct and that the client can continue
+
                     // Prepares the package with response
                     Package package = new Package
                     {
@@ -225,23 +235,59 @@ namespace server
         // Handles the client register procedure
         public async void Register(ConnectedClient client, string userID, string password)
         {
-            // Check if there is an userID in the json or not
-            // If so then alert the user that the account already exists
-            // Otherwise create the new account with the given password
+            try
+            {
+                if (_loginData.ContainsKey(userID))
+                {
+                    // Alerts the user that the account already exists
+
+                    // Creates a new package with the alert
+                    Package package = new Package
+                    {
+                        requestType = RequestType.Register,
+                        loginResult = "Exists"
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
+
+                    // Send to client
+                    await client.Writer.WriteLineAsync(delivery);
+                    client.Writer.Flush();
+                }
+                else
+                {
+                    // Stores the new account
+                    client.UserID = userID;
+                    _loginData.Add(userID, password);
+                    using (StreamWriter w = new StreamWriter(_loginDataPath)) { w.Write(_loginData); }
+
+                    // Creates a new package with response
+                    Package package = new Package 
+                    { 
+                        requestType = RequestType.Register,
+                        loginResult = "Success"
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
+
+                    // Sends it to client
+                    await client.Writer.WriteLineAsync(delivery);
+                    client.Writer.Flush();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); return; }
         }
     }
 
     // Class consisting of common client properties and functions
     public class ConnectedClient
     {
-        public TcpClient Client;
+        public TcpClient Tcp;
         public StreamWriter Writer;
         public string UserID {  get; set; }
 
-        public ConnectedClient(TcpClient client)
+        public ConnectedClient(TcpClient tcp)
         {
-            Client = client;
-            Writer = new StreamWriter(Client.GetStream(), Encoding.Unicode);
+            Tcp = tcp;
+            Writer = new StreamWriter(Tcp.GetStream(), Encoding.Unicode);
         }
     }
 
