@@ -28,3 +28,4 @@ C:\Programming\network-or-something\client\obj\Debug\Client.csproj.CoreCompileIn
 C:\Programming\network-or-something\client\obj\Debug\Client.csproj.Up2Date
 C:\Programming\network-or-something\client\obj\Debug\Client.exe
 C:\Programming\network-or-something\client\obj\Debug\Client.pdb
+C:\Users\Reza\Programming\school-stuff\network-or-something\client\obj\Debug\Client.Register.resources

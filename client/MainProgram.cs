@@ -52,7 +52,7 @@ namespace Client
                 tbxBroadcast.Text = "";
                 
                 // Package containing the relevant data
-                var package = new
+                Package package = new Package()
                 {
                     requestType = RequestType.Broadcast,
                     data = message
@@ -60,10 +60,10 @@ namespace Client
                 
                 // Converts it to string before delivering
                 string delivery = JsonConvert.SerializeObject(package);
+                Console.WriteLine(delivery);
 
                 // Sends the package
                 await _writer.WriteLineAsync(delivery);
-                _writer.Flush();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Delivering Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }

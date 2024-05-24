@@ -61,7 +61,7 @@ namespace Client
             {
                 Hide();
                 _hasLoaded = true;
-                Register register = new Register(_client);
+                MainProgram register = new MainProgram(_client);
                 register.ShowDialog();
             }
         }

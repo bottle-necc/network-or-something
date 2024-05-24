@@ -96,8 +96,15 @@ namespace server
 
                         // Collects package and prepares it for interpretation
                         string delivery = await reader.ReadLineAsync();
+
+                        // Removes a faulty character that appears for whatever reason
+                        if (delivery[0] != '{')
+                        {
+                            delivery = delivery.Substring(1);
+                        }
+
                         Package package = JsonConvert.DeserializeObject<Package>(delivery);
-                        
+
                         // Checks if the package includes any data before 
                         if (package.data != null)
                         {

@@ -24,10 +24,10 @@ public enum RequestType
 public class Package
 {
     public RequestType requestType { get; set; }
-    public string data { get; set; }
-    public string userID { get; set; }
-    public string password { get; set; }
-    public string loginResult { get; set; }
+    public string data = "";
+    public string userID = "";
+    public string password = "";
+    public string loginResult = "";
 }
 
 // Closes application when called (I.E when a program window is closed)
