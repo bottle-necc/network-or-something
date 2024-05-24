@@ -24,7 +24,7 @@ namespace Client
         public Login(TcpClient client)
         {
             InitializeComponent();
-            this.FormClosing += ApplicationExitHandler.OnWindowClosing;
+            FormClosing += ApplicationExitHandler.OnWindowClosing;
 
             _client = client;
             _reader = new StreamReader(_client.GetStream(), Encoding.Unicode);
@@ -67,22 +67,30 @@ namespace Client
 
         public async void StartListener()
         {
-            // Collects delivered package and prepares it for use
-            string delivery = await _reader.ReadLineAsync();
-            Package package = JsonConvert.DeserializeObject<Package>(delivery);
+            try
+            {
+                // Collects delivered package and prepares it for use
+                string delivery = await _reader.ReadLineAsync();
+                Package package = JsonConvert.DeserializeObject<Package>(delivery);
 
-            if (package.loginResult == "Correct")
-            {
-                // Loads the next window
-                this.Hide();
-                MainProgram mainProgram = new MainProgram(_client);
-                mainProgram.ShowDialog();
+                if (package.loginResult == "Correct")
+                {
+                    // Calls the main thread to execute the following block
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Loads the next window
+                        Hide();
+                        MainProgram mainProgram = new MainProgram(_client);
+                        mainProgram.ShowDialog();
+                    });
+                }
+                if (package.loginResult == "Incorrect")
+                {
+                    MessageBox.Show("Incorrect username or password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnLogin.Enabled = true;
+                }
             }
-            if (package.loginResult == "Incorrect")
-            {
-                MessageBox.Show("Incorrect username or password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                btnLogin.Enabled = true;
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Reading Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
     }
 }

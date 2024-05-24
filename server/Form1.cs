@@ -166,8 +166,7 @@ namespace server
             {
                 if (!_loginData.ContainsKey(userID))
                 {
-                    // If username doesn't exist then inform the client
-                    // Otherwise run the next if statement
+                    // Preparing the package with response
                     Package package = new Package
                     {
                         requestType = RequestType.Login,
@@ -175,17 +174,40 @@ namespace server
                     };
                     string delivery = JsonConvert.SerializeObject(package);
 
+                    // Sending to client
                     await client.Writer.WriteLineAsync(delivery);
                     client.Writer.Flush();
                 }
                 else if (_loginData[userID].ToString() != password)
                 {
-                    // If password is incorrect then inform the client
-                    // Otherwisse run the next if statement
+                    // Preparing the package with response
+                    Package package = new Package
+                    {
+                        requestType = RequestType.Login,
+                        loginResult = "Incorrect",
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
+
+                    // Sending to client
+                    await client.Writer.WriteLineAsync(delivery);
+                    client.Writer.Flush();
                 }
                 else if (_loginData[userID].ToString() == password)
                 {
+                    // Prepares the package with response
+                    Package package = new Package
+                    {
+                        requestType = RequestType.Login,
+                        loginResult = "Correct",
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
 
+                    // Sending to client
+                    await client.Writer.WriteLineAsync(delivery);
+                    client.Writer.Flush();
+
+                    // Adds the userID to the client object
+                    client.UserID = userID;
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
@@ -207,7 +229,7 @@ namespace server
     {
         public TcpClient Client;
         public StreamWriter Writer;
-        public string UserID;
+        public string UserID {  get; set; }
 
         public ConnectedClient(TcpClient client)
         {

@@ -23,7 +23,7 @@ namespace Client
         public ServerSelector()
         {
             InitializeComponent();
-            this.FormClosing += ApplicationExitHandler.OnWindowClosing;
+            FormClosing += ApplicationExitHandler.OnWindowClosing;
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace Client
             // Loads the next window, also prevents bug that causes window to load twice
             if (!_hasLoaded)
             {
-                this.Hide();
+                Hide();
                 _hasLoaded = true;
                 Login login = new Login(_client);
                 login.ShowDialog();
@@ -59,10 +59,10 @@ namespace Client
             // Loads the next window, also prevents bug that causes window to load twice
             if (!_hasLoaded)
             {
-                this.Hide();
+                Hide();
                 _hasLoaded = true;
-                MainProgram mainProgram = new MainProgram(_client);
-                mainProgram.ShowDialog();
+                Register register = new Register(_client);
+                register.ShowDialog();
             }
         }
 

@@ -26,7 +26,7 @@ namespace Client
         public MainProgram(TcpClient client)
         {
             InitializeComponent();
-            this.FormClosing += ApplicationExitHandler.OnWindowClosing;
+            FormClosing += ApplicationExitHandler.OnWindowClosing;
 
             // Assigns the fields with the given values
             _client = client;
