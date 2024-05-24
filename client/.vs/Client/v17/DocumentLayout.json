@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\",
+  "WorkspaceRootPath": "C:\\Programming\\network-or-something\\client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\users\\elev\\documents\\visual studio 2022\\bottle-necc\\network-or-something\\client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
+              "DocumentIndex": 3,
+              "Title": "StaticData.cs",
+              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\StaticData.cs",
+              "RelativeDocumentMoniker": "StaticData.cs",
+              "ToolTip": "C:\\Programming\\network-or-something\\client\\StaticData.cs",
+              "RelativeToolTip": "StaticData.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAwBcAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T08:19:54.238Z",
+              "WhenOpened": "2024-05-24T08:21:22.532Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Elev\\Documents\\Visual Studio 2022\\bottle-necc\\network-or-something\\Client\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "RelativeDocumentMoniker": "Login.cs",
+              "ToolTip": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "RelativeToolTip": "Login.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAADoAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T08:19:24.421Z"
+              "WhenOpened": "2024-05-24T09:04:15.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "RelativeDocumentMoniker": "Login.cs",
+              "ToolTip": "C:\\Programming\\network-or-something\\client\\Login.cs [Design]",
+              "RelativeToolTip": "Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T09:04:13.731Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainProgram.cs",
+              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "RelativeDocumentMoniker": "MainProgram.cs",
+              "ToolTip": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "RelativeToolTip": "MainProgram.cs",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAswFwAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T07:56:23.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainProgram.cs [Design]",
+              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "RelativeDocumentMoniker": "MainProgram.cs",
+              "ToolTip": "C:\\Programming\\network-or-something\\client\\MainProgram.cs [Design]",
+              "RelativeToolTip": "MainProgram.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T07:56:20.414Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

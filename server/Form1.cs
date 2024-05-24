@@ -16,9 +16,6 @@ using Newtonsoft.Json.Linq;
 
 // IMPORTANT INFO: WHEN SERVER IS FULLY DONE, SWITCH THE PROJECT FROM A CONSOLE PROJECT TO A WINDOWS PROJECT!
 
-// TODO: Revamp the client list and turn it into a class that stores both the tcp and the user id for future use
-// Each client is an object of that class
-
 namespace server
 {
     public partial class Server : Form
@@ -101,6 +98,7 @@ namespace server
                         string delivery = await reader.ReadLineAsync();
                         var package = JsonConvert.DeserializeObject<Package>(delivery);
                         
+                        // Checks if the package includes any data before 
                         if (package.data != null)
                         {
                            message = package.data.ToString();
@@ -141,9 +139,20 @@ namespace server
         {
             try
             {
+                // Creates a broadcast package
+                var package = new
+                {
+                    requestType = RequestType.Broadcast,
+                    data = message,
+                };
+
+                // Prepares it for delivery
+                string delivery = JsonConvert.SerializeObject(package);
+
+                // Delivers the package to all connected clients
                 foreach (ConnectedClient client in _clientList)
                 {
-                    await client.Writer.WriteLineAsync(message);
+                    await client.Writer.WriteLineAsync(delivery);
                     client.Writer.Flush();
                 }
             }
@@ -153,13 +162,34 @@ namespace server
         // Handles the client login procedure
         public async void Login(ConnectedClient client, string userID, string password)
         {
+            try
+            {
+                if (!_loginData.ContainsKey(userID))
+                {
+                    // If username doesn't exist then inform the client
+                    // Otherwise run the next if statement
+                }
+                else if (_loginData[userID].ToString() != password)
+                {
+                    // If password is incorrect then inform the client
+                    // Otherwisse run the next if statement
+                }
+                else if (_loginData[userID].ToString() == password)
+                {
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             // Compare the given values with the ones in the json file. if they are the same then send a success ping. else send a fail ping and ask for a retry
+
         }
 
         // Handles the client register procedure
         public async void Register(ConnectedClient client, string userID, string password)
         {
-
+            // Check if there is an userID in the json or not
+            // If so then alert the user that the account already exists
+            // Otherwise create the new account with the given password
         }
     }
 
@@ -177,7 +207,7 @@ namespace server
         }
     }
 
-    // Class consisting of the parts in a package. (I also break a C# rule by camelCasing the public fields, it's to prevent problems from overlapping variables etc)
+    // Class consisting of the parts in a package.
     public class Package
     {
         public RequestType requestType { get; set; }

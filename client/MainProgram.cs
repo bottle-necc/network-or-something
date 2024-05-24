@@ -58,25 +58,39 @@ namespace Client
                     data = message
                 };
                 
+                // Converts it to string before delivering
                 string delivery = JsonConvert.SerializeObject(package);
 
-                // Sends the message
+                // Sends the package
                 await _writer.WriteLineAsync(delivery);
                 _writer.Flush();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Delivering Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
+        // Handles and sorts all deliveries recieved from the server
         private void Mailbox()
         {
             try
             {
                 while (_client.Connected)
                 {
-                    string message = _reader.ReadLine();
+                    string message = "";
+
+                    // Collects the package and unpacks it
+                    string delivery = _reader.ReadLine();
+                    Package package = JsonConvert.DeserializeObject<Package>(delivery);
+                    
+                    
+                    if (package.requestType == RequestType.Broadcast || package.requestType == RequestType.Whisper)
+                    {
+                        // If the package is an ordinary broadcast or a whisper then simply display it
+                        message = package.data;
+                    }
 
                     if (message == null)
-                    {                         
+                    {
+                        // If disconnected, display it
                         tbxInbox.Text += "Disconnected!";
                         break;
                     }

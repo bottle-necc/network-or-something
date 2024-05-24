@@ -21,3 +21,16 @@ C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\ser
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Reza\Programming\school-stuff\network-or-something\server\obj\Debug\server.csproj.CopyComplete
+C:\Programming\network-or-something\server\bin\Debug\server.exe.config
+C:\Programming\network-or-something\server\bin\Debug\server.exe
+C:\Programming\network-or-something\server\bin\Debug\server.pdb
+C:\Programming\network-or-something\server\bin\Debug\Newtonsoft.Json.dll
+C:\Programming\network-or-something\server\bin\Debug\Newtonsoft.Json.xml
+C:\Programming\network-or-something\server\obj\Debug\server.csproj.AssemblyReference.cache
+C:\Programming\network-or-something\server\obj\Debug\server.Server.resources
+C:\Programming\network-or-something\server\obj\Debug\server.Properties.Resources.resources
+C:\Programming\network-or-something\server\obj\Debug\server.csproj.GenerateResource.cache
+C:\Programming\network-or-something\server\obj\Debug\server.csproj.CoreCompileInputs.cache
+C:\Programming\network-or-something\server\obj\Debug\server.csproj.Up2Date
+C:\Programming\network-or-something\server\obj\Debug\server.exe
+C:\Programming\network-or-something\server\obj\Debug\server.pdb

@@ -39,6 +39,7 @@ namespace Client
                 {
                     btnLogin.Enabled = false;
 
+                    // Creates a new package with the login request
                     var package = new
                     {
                         requestType = RequestType.Login,
@@ -46,12 +47,16 @@ namespace Client
                         password = tbxPassword.Text,
                     };
 
+                    // Converts package to a string before delivering
                     string delivery = JsonConvert.SerializeObject(package);
+
+                    // Sends the login request
                     await _writer.WriteLineAsync(delivery);
                     _writer.Flush();
                 }
                 else
                 {
+                    // If the fields are blank then warn the user
                     MessageBox.Show("Username and/or password can not be left blank", "Login Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
