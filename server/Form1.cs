@@ -114,7 +114,7 @@ namespace server
                         // If the client sent a broadcast package, broadcast the data inside
                         if (package.requestType == RequestType.Broadcast)
                         {
-                            Broadcast(message);
+                            Broadcast(message, client);
                         }
                         else if (package.requestType == RequestType.Login)
                         {
@@ -142,7 +142,7 @@ namespace server
         }
 
         // Sends a message to every connected client, including the one that sent the message
-        public async void Broadcast(string message)
+        public async void Broadcast(string message, ConnectedClient client)
         {
             try
             {
@@ -150,17 +150,17 @@ namespace server
                 var package = new
                 {
                     requestType = RequestType.Broadcast,
-                    data = message,
+                    data = $"{client.UserID}: {message}",
                 };
 
                 // Prepares it for delivery
                 string delivery = JsonConvert.SerializeObject(package);
 
                 // Delivers the package to all connected clients
-                foreach (ConnectedClient client in _clientList)
+                foreach (ConnectedClient connectedClient in _clientList)
                 {
-                    await client.Writer.WriteLineAsync(delivery);
-                    client.Writer.Flush();
+                    await connectedClient.Writer.WriteLineAsync(delivery);
+                    connectedClient.Writer.Flush();
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Broadcasting Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
