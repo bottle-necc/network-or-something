@@ -96,7 +96,7 @@ namespace server
 
                         // Collects package and prepares it for interpretation
                         string delivery = await reader.ReadLineAsync();
-                        var package = JsonConvert.DeserializeObject<Package>(delivery);
+                        Package package = JsonConvert.DeserializeObject<Package>(delivery);
                         
                         // Checks if the package includes any data before 
                         if (package.data != null)
@@ -168,6 +168,15 @@ namespace server
                 {
                     // If username doesn't exist then inform the client
                     // Otherwise run the next if statement
+                    Package package = new Package
+                    {
+                        requestType = RequestType.Login,
+                        loginResult = "Incorrect",
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
+
+                    await client.Writer.WriteLineAsync(delivery);
+                    client.Writer.Flush();
                 }
                 else if (_loginData[userID].ToString() != password)
                 {

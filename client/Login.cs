@@ -29,6 +29,8 @@ namespace Client
             _client = client;
             _reader = new StreamReader(_client.GetStream(), Encoding.Unicode);
             _writer = new StreamWriter(_client.GetStream(), Encoding.Unicode);
+
+            Task.Run(() => StartListener());
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -61,6 +63,26 @@ namespace Client
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+        }
+
+        public async void StartListener()
+        {
+            // Collects delivered package and prepares it for use
+            string delivery = await _reader.ReadLineAsync();
+            Package package = JsonConvert.DeserializeObject<Package>(delivery);
+
+            if (package.loginResult == "Correct")
+            {
+                // Loads the next window
+                this.Hide();
+                MainProgram mainProgram = new MainProgram(_client);
+                mainProgram.ShowDialog();
+            }
+            if (package.loginResult == "Incorrect")
+            {
+                MessageBox.Show("Incorrect username or password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnLogin.Enabled = true;
+            }
         }
     }
 }
