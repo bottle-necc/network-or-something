@@ -247,6 +247,9 @@ namespace server
 
                         // Adds the userID to the client object
                         client.UserID = userID;
+
+                        // Alerts everyone that the client has joined
+                        Announce($"Welcome back {client.UserID}!");
                     }
                     else
                     {
@@ -292,6 +295,8 @@ namespace server
                 }
                 else
                 {
+                    // Account created and client is notified
+
                     // Stores the new account
                     client.UserID = userID;
                     _loginData.Add(userID, password);
@@ -308,6 +313,9 @@ namespace server
                     // Sends it to client
                     await client.Writer.WriteLineAsync(delivery);
                     client.Writer.Flush();
+
+                    // Alerts everyone that the client has joined
+                    Announce($"Everyone, welcome {client.UserID}!");
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); return; }
@@ -400,6 +408,24 @@ namespace server
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Whisper Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
+
+        public async void Announce(string message)
+        {
+            // Package with data
+            Package package = new Package
+            {
+                requestType = RequestType.Announcement,
+                data = message
+            };
+            string delivery = JsonConvert.SerializeObject(package);
+
+            // Sends to all clients
+            foreach (ConnectedClient client in _clientList)
+            {
+                await client.Writer.WriteLineAsync(delivery);
+                client.Writer.Flush();
+            }
+        }
     }
 
     // Class consisting of common client properties and functions
@@ -430,6 +456,7 @@ namespace server
     // Enumerator of all types of requests
     public enum RequestType
     {
+        Announcement,
         Broadcast,
         Whisper,
         Login,

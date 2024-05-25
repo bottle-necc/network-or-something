@@ -93,7 +93,7 @@ namespace Client
                     Package package = JsonConvert.DeserializeObject<Package>(delivery);
                     
                     
-                    if (package.requestType == RequestType.Broadcast || package.requestType == RequestType.Whisper)
+                    if (package.requestType == RequestType.Broadcast || package.requestType == RequestType.Whisper || package.requestType == RequestType.Announcement)
                     {
                         // If the package is an ordinary broadcast or a whisper then simply display it
                         message = package.data;

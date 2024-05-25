@@ -13,6 +13,7 @@ using System.Net.Sockets;
 // Enumerator of all types of requests
 public enum RequestType
 {
+    Announcement,
     Broadcast,
     Whisper,
     Login,
