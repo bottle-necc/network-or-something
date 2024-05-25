@@ -19,12 +19,15 @@ namespace Client
     public partial class MainProgram : Form
     {
         private TcpClient _client;
-        private string _userID;
         private StreamReader _reader;
         private StreamWriter _writer;
-        private string _placeholderText = "Type your message here, write something captivating!"; // Placeholder text for tbxBroadcast
+
         private List<string> _userList = new List<string>();
         private List<Button> _btnUserList = new List<Button>();
+
+        private string _placeholderText = "Type your message here, write something captivating!"; // Placeholder text for tbxBroadcast
+        private string _userID;
+        private string _target;
 
         // TODO: when logging in or registering, run a warning window if the username has '~' to prevent issues
 
@@ -94,6 +97,7 @@ namespace Client
                     {
                         // If the package is an ordinary broadcast or a whisper then simply display it
                         message = package.data;
+                        tbxInbox.Text += message + Environment.NewLine;
                     }
                     else if (package.requestType == RequestType.UpdateUserList)
                     {
@@ -106,8 +110,6 @@ namespace Client
                         tbxInbox.Text += "Disconnected!";
                         break;
                     }
-
-                    tbxInbox.Text += message + Environment.NewLine;
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Reading Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
@@ -153,7 +155,6 @@ namespace Client
 
         public void UpdateButtonList(Package package)
         {
-            Console.WriteLine("Creating buttons");
             try
             {
                 int i = 0;
@@ -190,6 +191,7 @@ namespace Client
                             btn.AutoSize = false;
                             btn.Size = new Size(99, 23);
                             btn.Location = new Point(0, yPoint);
+                            btn.Click += ClientButtons_Pressed;
                             btn.Name = "btn" + i;
                         });
 
@@ -202,21 +204,59 @@ namespace Client
 
         public async void CallForUpdate()
         {
-            // Creates a package
-            Package package = new Package
+            try
             {
-                requestType = RequestType.UpdateUserList,
-            };
-            string delivery = JsonConvert.SerializeObject(package);
+                // Creates a package
+                Package package = new Package
+                {
+                    requestType = RequestType.UpdateUserList,
+                };
+                string delivery = JsonConvert.SerializeObject(package);
 
-            // Sends the package
-            await _writer.WriteLineAsync(delivery);
-            _writer.Flush();
+                // Sends the package
+                await _writer.WriteLineAsync(delivery);
+                _writer.Flush();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "CallForUpdate Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+        }
+
+        private void ClientButtons_Pressed(object sender, EventArgs e)
+        {
+            // Grabs the selected button
+            Button selected = sender as Button;
+
+            // Updates the current target
+            _target = selected.Text;
+            lblTarget.Text = _target;
         }
 
         private void btnWhisper_Click(object sender, EventArgs e)
         {
-            
+            Whisper();
+        }
+
+        public async void Whisper()
+        {
+            try
+            {
+                // Grabs the message from the tbx
+                string message = tbxBroadcast.Text;
+                tbxBroadcast.Text = "";
+
+                // Packages the whisper
+                Package package = new Package
+                {
+                    requestType = RequestType.Whisper,
+                    data = message,
+                    target = _target,
+                };
+                string delivery = JsonConvert.SerializeObject(package);
+
+                // Sends the delivery
+                await _writer.WriteLineAsync(delivery);
+                _writer.Flush();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Whisper Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
     }
 }

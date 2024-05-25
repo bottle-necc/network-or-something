@@ -112,11 +112,9 @@ namespace server
                            message = package.data.ToString();
                         }
 
-                        // If the client sent a broadcast package, broadcast the data inside
                         if (package.requestType == RequestType.Broadcast)
                         {
                             Broadcast(message, client);
-                            tbxInbox.Text += message + Environment.NewLine;
                         }
                         else if (package.requestType == RequestType.Login)
                         {
@@ -128,7 +126,7 @@ namespace server
                         }
                         else if (package.requestType == RequestType.Whisper)
                         {
-                            Whisper(client, package.target, message);
+                            Whisper(client, message, package.target);
                         }
                         else if (package.requestType == RequestType.UpdateUserList)
                         {
@@ -174,6 +172,9 @@ namespace server
                     await connectedClient.Writer.WriteLineAsync(delivery);
                     connectedClient.Writer.Flush();
                 }
+
+                // Logs the message in the server
+                tbxInbox.Text += $"{client.UserID}: {message}" + Environment.NewLine;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Broadcasting Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
@@ -327,9 +328,49 @@ namespace server
             catch (Exception ex) { MessageBox.Show(ex.Message, "Client List Syncing Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
 
-        public async void Whisper(ConnectedClient client, string target, string message)
+        public async void Whisper(ConnectedClient sender, string message, string target)
         {
+            try
+            {
+                ConnectedClient connectedTarget = null;
 
+                // Finds the target in ConnectedClient format
+                foreach (ConnectedClient item in _clientList)
+                {
+                    if (item.UserID == target)
+                    {
+                        connectedTarget = item;
+                    }
+                }
+
+                // Creates the package that will be sent towards the sender
+                Package pkgToSender = new Package
+                {
+                    requestType = RequestType.Whisper,
+                    data = $"You --> {target}: {message}"
+                };
+                string dlvToSender = JsonConvert.SerializeObject(pkgToSender);
+
+                // Creates the package that will be sent towards the target
+                Package pkgToTarget = new Package
+                {
+                    requestType = RequestType.Whisper,
+                    data = $"{sender.UserID} --> You: {message}"
+                };
+                string dlvToTarget = JsonConvert.SerializeObject(pkgToTarget);
+
+                // Sends the package to the sender
+                await sender.Writer.WriteLineAsync(dlvToSender);
+                sender.Writer.Flush();
+
+                // Sends the package to the target
+                await connectedTarget.Writer.WriteLineAsync(dlvToTarget);
+                connectedTarget.Writer.Flush();
+
+                // Logs the message in the server
+                tbxInbox.Text += $"{sender.UserID} --> {target}: {message}" + Environment.NewLine;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Whisper Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }
     }
 
