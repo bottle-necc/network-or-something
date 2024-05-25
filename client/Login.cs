@@ -89,6 +89,11 @@ namespace Client
                     MessageBox.Show("Incorrect username or password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnLogin.Enabled = true;
                 }
+                else if (package.loginResult == "Occupied")
+                {
+                    MessageBox.Show("This account is already connecteed to the server", "Occupied Account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnLogin.Enabled = true;
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Reading Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
         }

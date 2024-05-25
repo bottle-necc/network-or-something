@@ -218,22 +218,50 @@ namespace server
                 }
                 else if (_loginData[userID].ToString() == password)
                 {
-                    // Alerts the client that the account info is correct and that the client can continue
+                    bool alreadyExists = false;
 
-                    // Prepares the package with response
-                    Package package = new Package
+                    // Checks if that account is already connected
+                    foreach (ConnectedClient item in _clientList)
                     {
-                        requestType = RequestType.Login,
-                        loginResult = "Correct",
-                    };
-                    string delivery = JsonConvert.SerializeObject(package);
+                        if (item.UserID == userID)
+                        {
+                            alreadyExists = true;
+                        }
+                    }
 
-                    // Sending to client
-                    await client.Writer.WriteLineAsync(delivery);
-                    client.Writer.Flush();
+                    if (!alreadyExists)
+                    {
+                        // Alerts the client that the account info is correct and that the client can continue
 
-                    // Adds the userID to the client object
-                    client.UserID = userID;
+                        // Prepares the package with response
+                        Package package = new Package
+                        {
+                            requestType = RequestType.Login,
+                            loginResult = "Correct",
+                        };
+                        string delivery = JsonConvert.SerializeObject(package);
+
+                        // Sending to client
+                        await client.Writer.WriteLineAsync(delivery);
+                        client.Writer.Flush();
+
+                        // Adds the userID to the client object
+                        client.UserID = userID;
+                    }
+                    else
+                    {
+                        // Prepares the package with response
+                        Package package = new Package
+                        {
+                            requestType = RequestType.Login,
+                            loginResult = "Occupied",
+                        };
+                        string delivery = JsonConvert.SerializeObject(package);
+
+                        // Sending to client
+                        await client.Writer.WriteLineAsync(delivery);
+                        client.Writer.Flush();
+                    }
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
