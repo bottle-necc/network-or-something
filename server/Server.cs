@@ -116,20 +116,23 @@ namespace server
                         if (package.requestType == RequestType.Broadcast)
                         {
                             Broadcast(message, client);
+                            tbxInbox.Text += message + Environment.NewLine;
                         }
                         else if (package.requestType == RequestType.Login)
                         {
                             Login(client, package.userID, package.password);
-                            UpdateUserList(client);
                         }
                         else if (package.requestType == RequestType.Register)
                         {
                             Register(client, package.userID, package.password);
-                            UpdateUserList(client);
                         }
                         else if (package.requestType == RequestType.Whisper)
                         {
                             Whisper(client, package.target, message);
+                        }
+                        else if (package.requestType == RequestType.UpdateUserList)
+                        {
+                            UpdateUserList(client);
                         }
 
                         // if the package is null (i.e client disconnected) then safely handle the disconnect
@@ -144,8 +147,6 @@ namespace server
 
                             break;
                         }
-
-                        tbxInbox.Text += message + Environment.NewLine;
                     }
                 }
             }
@@ -287,6 +288,7 @@ namespace server
         {
             try
             {
+                Console.WriteLine("Updating user list");
                 // Makes sure the method only runs when a userID has been established
                 if (newClient.UserID != null)
                 {
@@ -295,15 +297,11 @@ namespace server
                     // Collects all available userID's for sending
                     foreach (ConnectedClient client in _clientList)
                     {
-                        if (!string.IsNullOrEmpty(client.UserID))
-                        {
-                            users.Add(client.UserID);
-                        }
+                        users.Add(client.UserID);
                     }
 
-                    string list = string.Join("~", users);
-
                     // Packages the update
+                    string list = string.Join("~", users);
                     Package package = new Package
                     {
                         requestType = RequestType.UpdateUserList,

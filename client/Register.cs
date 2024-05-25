@@ -86,7 +86,7 @@ namespace Client
                     {
                         // Loads the next window
                         Hide();
-                        MainProgram mainProgram = new MainProgram(_client);
+                        MainProgram mainProgram = new MainProgram(_client, tbxUserID.Text);
                         mainProgram.ShowDialog();
                     });
                 }

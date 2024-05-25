@@ -33,13 +33,16 @@
             this.lblInbox = new System.Windows.Forms.Label();
             this.tbxBroadcast = new System.Windows.Forms.TextBox();
             this.btnWhisper = new System.Windows.Forms.Button();
+            this.lblClientList = new System.Windows.Forms.Label();
+            this.lblWhisperSelected = new System.Windows.Forms.Label();
+            this.pnlClientButtons = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // tbxInbox
             // 
             this.tbxInbox.AcceptsReturn = true;
             this.tbxInbox.AcceptsTab = true;
-            this.tbxInbox.Location = new System.Drawing.Point(12, 39);
+            this.tbxInbox.Location = new System.Drawing.Point(12, 25);
             this.tbxInbox.Multiline = true;
             this.tbxInbox.Name = "tbxInbox";
             this.tbxInbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -59,17 +62,17 @@
             // lblInbox
             // 
             this.lblInbox.AutoSize = true;
-            this.lblInbox.Location = new System.Drawing.Point(9, 23);
+            this.lblInbox.Location = new System.Drawing.Point(9, 9);
             this.lblInbox.Name = "lblInbox";
-            this.lblInbox.Size = new System.Drawing.Size(36, 13);
+            this.lblInbox.Size = new System.Drawing.Size(33, 13);
             this.lblInbox.TabIndex = 2;
-            this.lblInbox.Text = "Inbox:";
+            this.lblInbox.Text = "Inbox";
             // 
             // tbxBroadcast
             // 
             this.tbxBroadcast.AcceptsReturn = true;
             this.tbxBroadcast.AcceptsTab = true;
-            this.tbxBroadcast.Location = new System.Drawing.Point(12, 248);
+            this.tbxBroadcast.Location = new System.Drawing.Point(12, 242);
             this.tbxBroadcast.Multiline = true;
             this.tbxBroadcast.Name = "tbxBroadcast";
             this.tbxBroadcast.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -89,11 +92,41 @@
             this.btnWhisper.UseVisualStyleBackColor = true;
             this.btnWhisper.Click += new System.EventHandler(this.btnWhisper_Click);
             // 
+            // lblClientList
+            // 
+            this.lblClientList.AutoSize = true;
+            this.lblClientList.Location = new System.Drawing.Point(226, 9);
+            this.lblClientList.Name = "lblClientList";
+            this.lblClientList.Size = new System.Drawing.Size(52, 13);
+            this.lblClientList.TabIndex = 6;
+            this.lblClientList.Text = "Client List";
+            // 
+            // lblWhisperSelected
+            // 
+            this.lblWhisperSelected.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblWhisperSelected.Location = new System.Drawing.Point(229, 326);
+            this.lblWhisperSelected.Name = "lblWhisperSelected";
+            this.lblWhisperSelected.Size = new System.Drawing.Size(127, 23);
+            this.lblWhisperSelected.TabIndex = 7;
+            this.lblWhisperSelected.Text = "Not Selected";
+            this.lblWhisperSelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlClientButtons
+            // 
+            this.pnlClientButtons.AutoScroll = true;
+            this.pnlClientButtons.Location = new System.Drawing.Point(229, 25);
+            this.pnlClientButtons.Name = "pnlClientButtons";
+            this.pnlClientButtons.Size = new System.Drawing.Size(127, 289);
+            this.pnlClientButtons.TabIndex = 8;
+            // 
             // MainProgram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 361);
+            this.ClientSize = new System.Drawing.Size(368, 361);
+            this.Controls.Add(this.pnlClientButtons);
+            this.Controls.Add(this.lblWhisperSelected);
+            this.Controls.Add(this.lblClientList);
             this.Controls.Add(this.btnWhisper);
             this.Controls.Add(this.tbxBroadcast);
             this.Controls.Add(this.lblInbox);
@@ -113,5 +146,8 @@
         private System.Windows.Forms.Label lblInbox;
         private System.Windows.Forms.TextBox tbxBroadcast;
         private System.Windows.Forms.Button btnWhisper;
+        private System.Windows.Forms.Label lblClientList;
+        private System.Windows.Forms.Label lblWhisperSelected;
+        private System.Windows.Forms.Panel pnlClientButtons;
     }
 }

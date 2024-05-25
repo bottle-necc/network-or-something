@@ -19,20 +19,23 @@ namespace Client
     public partial class MainProgram : Form
     {
         private TcpClient _client;
+        private string _userID;
         private StreamReader _reader;
         private StreamWriter _writer;
         private string _placeholderText = "Type your message here, write something captivating!"; // Placeholder text for tbxBroadcast
         private List<string> _userList = new List<string>();
+        private List<Button> _btnUserList = new List<Button>();
 
         // TODO: when logging in or registering, run a warning window if the username has '~' to prevent issues
 
-        public MainProgram(TcpClient client)
+        public MainProgram(TcpClient client, string userID)
         {
             InitializeComponent();
             FormClosing += ApplicationExitHandler.OnWindowClosing;
 
             // Assigns the fields with the given values
             _client = client;
+            _userID = userID;
             _reader = new StreamReader(_client.GetStream(), Encoding.Unicode);
             _writer = new StreamWriter(_client.GetStream(), Encoding.Unicode);
             _writer.AutoFlush = true;
@@ -41,6 +44,9 @@ namespace Client
             tbxBroadcast.Text = _placeholderText;
             tbxBroadcast.ForeColor = Color.DarkSlateGray;
             tbxBroadcast.Font = new Font(tbxBroadcast.Font, FontStyle.Italic);
+
+            // Calls server for a client list update
+            CallForUpdate();
 
             // New thread that listens for messages
             Task.Run(() => Mailbox());
@@ -91,8 +97,7 @@ namespace Client
                     }
                     else if (package.requestType == RequestType.UpdateUserList)
                     {
-                        string data = package.data;
-                        _userList = new List<string>(data.Split('~'));
+                        UpdateButtonList(package);
                     }
 
                     if (message == null)
@@ -144,6 +149,69 @@ namespace Client
                 tbxBroadcast.ForeColor = Color.Black;
                 tbxBroadcast.Font = new Font(tbxBroadcast.Font, FontStyle.Regular);
             }
+        }
+
+        public void UpdateButtonList(Package package)
+        {
+            Console.WriteLine("Creating buttons");
+            try
+            {
+                int i = 0;
+
+                // Adds the contents of the data in the list
+                string data = package.data;
+                _userList = new List<string>(data.Split('~'));
+
+                // Clears the list of buttons of users to whipser to
+                _btnUserList.Clear();
+
+                // Removes the clients own name from the userList
+                foreach (string item in _userList)
+                {
+                    if (item == _userID)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        // Calculates the vertical position of the button in the panel
+                        int yPoint = 23 * i + 2;
+
+                        // Runs in the main thread (i.e the one that contains the form items
+                        Invoke((MethodInvoker)delegate
+                        {
+                            // Creates a new button inside the panel for every entry
+                            Button btn = new Button();
+                            pnlClientButtons.Controls.Add(btn);
+                            _btnUserList.Add(btn);
+
+                            // Configures its data
+                            btn.Text = item;
+                            btn.AutoSize = false;
+                            btn.Size = new Size(99, 23);
+                            btn.Location = new Point(0, yPoint);
+                            btn.Name = "btn" + i;
+                        });
+
+                        i++;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "UpdateButtonList Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+        }
+
+        public async void CallForUpdate()
+        {
+            // Creates a package
+            Package package = new Package
+            {
+                requestType = RequestType.UpdateUserList,
+            };
+            string delivery = JsonConvert.SerializeObject(package);
+
+            // Sends the package
+            await _writer.WriteLineAsync(delivery);
+            _writer.Flush();
         }
 
         private void btnWhisper_Click(object sender, EventArgs e)
