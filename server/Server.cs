@@ -28,6 +28,7 @@ namespace server
 
         public Server()
         {
+            Console.WriteLine("Server booting up...\n");
             InitializeComponent();
             CheckForJson();
         }
@@ -119,10 +120,16 @@ namespace server
                         else if (package.requestType == RequestType.Login)
                         {
                             Login(client, package.userID, package.password);
+                            UpdateUserList(client);
                         }
                         else if (package.requestType == RequestType.Register)
                         {
                             Register(client, package.userID, package.password);
+                            UpdateUserList(client);
+                        }
+                        else if (package.requestType == RequestType.Whisper)
+                        {
+                            Whisper(client, package.target, message);
                         }
 
                         // if the package is null (i.e client disconnected) then safely handle the disconnect
@@ -275,6 +282,57 @@ namespace server
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error ); return; }
         }
+
+        public async void UpdateUserList(ConnectedClient newClient)
+        {
+            try
+            {
+                // Makes sure the method only runs when a userID has been established
+                if (newClient.UserID != null)
+                {
+                    List<string> users = new List<string>();
+
+                    // Collects all available userID's for sending
+                    foreach (ConnectedClient client in _clientList)
+                    {
+                        if (!string.IsNullOrEmpty(client.UserID))
+                        {
+                            users.Add(client.UserID);
+                        }
+                    }
+
+                    string list = string.Join("~", users);
+
+                    // Packages the update
+                    Package package = new Package
+                    {
+                        requestType = RequestType.UpdateUserList,
+                        data = list
+                    };
+                    string delivery = JsonConvert.SerializeObject(package);
+
+                    // Sends the package to all users
+                    foreach (ConnectedClient client in _clientList)
+                    {
+                        await client.Writer.WriteLineAsync(delivery);
+                        client.Writer.Flush();
+                    }
+
+                    tbxClientList.Clear();
+
+                    foreach (string item in users)
+                    {
+                        tbxClientList.Text += item + Environment.NewLine;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Client List Syncing Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+        }
+
+        public async void Whisper(ConnectedClient client, string target, string message)
+        {
+
+        }
     }
 
     // Class consisting of common client properties and functions
@@ -299,6 +357,7 @@ namespace server
         public string userID { get; set; }
         public string password { get; set; }
         public string loginResult { get; set; }
+        public string target {  get; set; }
     }
 
     // Enumerator of all types of requests
@@ -308,6 +367,7 @@ namespace server
         Whisper,
         Login,
         Register,
+        UpdateUserList,
         Command
     }
 }

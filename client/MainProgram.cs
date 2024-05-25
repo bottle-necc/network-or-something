@@ -22,6 +22,9 @@ namespace Client
         private StreamReader _reader;
         private StreamWriter _writer;
         private string _placeholderText = "Type your message here, write something captivating!"; // Placeholder text for tbxBroadcast
+        private List<string> _userList = new List<string>();
+
+        // TODO: when logging in or registering, run a warning window if the username has '~' to prevent issues
 
         public MainProgram(TcpClient client)
         {
@@ -60,7 +63,6 @@ namespace Client
                 
                 // Converts it to string before delivering
                 string delivery = JsonConvert.SerializeObject(package);
-                Console.WriteLine(delivery);
 
                 // Sends the package
                 await _writer.WriteLineAsync(delivery);
@@ -86,6 +88,11 @@ namespace Client
                     {
                         // If the package is an ordinary broadcast or a whisper then simply display it
                         message = package.data;
+                    }
+                    else if (package.requestType == RequestType.UpdateUserList)
+                    {
+                        string data = package.data;
+                        _userList = new List<string>(data.Split('~'));
                     }
 
                     if (message == null)
@@ -137,6 +144,11 @@ namespace Client
                 tbxBroadcast.ForeColor = Color.Black;
                 tbxBroadcast.Font = new Font(tbxBroadcast.Font, FontStyle.Regular);
             }
+        }
+
+        private void btnWhisper_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -33,7 +33,6 @@
             this.lblInbox = new System.Windows.Forms.Label();
             this.tbxBroadcast = new System.Windows.Forms.TextBox();
             this.btnWhisper = new System.Windows.Forms.Button();
-            this.btnDisconnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbxInbox
@@ -44,7 +43,7 @@
             this.tbxInbox.Multiline = true;
             this.tbxInbox.Name = "tbxInbox";
             this.tbxInbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxInbox.Size = new System.Drawing.Size(294, 203);
+            this.tbxInbox.Size = new System.Drawing.Size(208, 203);
             this.tbxInbox.TabIndex = 0;
             // 
             // btnBroadcast
@@ -74,7 +73,7 @@
             this.tbxBroadcast.Multiline = true;
             this.tbxBroadcast.Name = "tbxBroadcast";
             this.tbxBroadcast.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxBroadcast.Size = new System.Drawing.Size(294, 72);
+            this.tbxBroadcast.Size = new System.Drawing.Size(208, 72);
             this.tbxBroadcast.TabIndex = 3;
             this.tbxBroadcast.TextChanged += new System.EventHandler(this.tbxBroadcast_TextChanged);
             this.tbxBroadcast.MouseEnter += new System.EventHandler(this.tbxBroadcast_MouseEnter);
@@ -82,28 +81,19 @@
             // 
             // btnWhisper
             // 
-            this.btnWhisper.Location = new System.Drawing.Point(122, 326);
+            this.btnWhisper.Location = new System.Drawing.Point(145, 326);
             this.btnWhisper.Name = "btnWhisper";
             this.btnWhisper.Size = new System.Drawing.Size(75, 23);
             this.btnWhisper.TabIndex = 4;
             this.btnWhisper.Text = "Whisper";
             this.btnWhisper.UseVisualStyleBackColor = true;
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Location = new System.Drawing.Point(231, 326);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(75, 23);
-            this.btnDisconnect.TabIndex = 5;
-            this.btnDisconnect.Text = "Disconnect";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnWhisper.Click += new System.EventHandler(this.btnWhisper_Click);
             // 
             // MainProgram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 361);
-            this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnWhisper);
             this.Controls.Add(this.tbxBroadcast);
             this.Controls.Add(this.lblInbox);
@@ -123,6 +113,5 @@
         private System.Windows.Forms.Label lblInbox;
         private System.Windows.Forms.TextBox tbxBroadcast;
         private System.Windows.Forms.Button btnWhisper;
-        private System.Windows.Forms.Button btnDisconnect;
     }
 }
