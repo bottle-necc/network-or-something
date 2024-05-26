@@ -28,7 +28,6 @@ namespace server
 
         public Server()
         {
-            Console.WriteLine("Server booting up...\n");
             InitializeComponent();
             CheckForJson();
         }

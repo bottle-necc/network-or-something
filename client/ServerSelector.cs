@@ -22,7 +22,6 @@ namespace Client
 
         public ServerSelector()
         {
-            Console.WriteLine("Client starting up...\n");
             InitializeComponent();
             FormClosing += ApplicationExitHandler.OnWindowClosing;
         }

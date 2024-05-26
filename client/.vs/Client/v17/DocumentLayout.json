@@ -1,34 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Programming\\network-or-something\\client\\",
+  "WorkspaceRootPath": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\programming\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Programming\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\users\\reza\\programming\\school-stuff\\network-or-something\\client\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\users\\reza\\programming\\school-stuff\\network-or-something\\client\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\users\\reza\\programming\\school-stuff\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|c:\\users\\reza\\programming\\school-stuff\\network-or-something\\client\\serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8D94038-11B2-4B2B-B282-B99DE0062D43}|Client.csproj|solutionrelative:serverselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,90 +50,129 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "StaticData.cs",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\StaticData.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\StaticData.cs",
               "RelativeDocumentMoniker": "StaticData.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\StaticData.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\StaticData.cs",
               "RelativeToolTip": "StaticData.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwBcAAAAHAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T08:21:22.532Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ServerSelector.cs",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\ServerSelector.cs",
-              "RelativeDocumentMoniker": "ServerSelector.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\ServerSelector.cs",
-              "RelativeToolTip": "ServerSelector.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwCkAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T11:13:43.669Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ServerSelector.cs [Design]",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\ServerSelector.cs",
-              "RelativeDocumentMoniker": "ServerSelector.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\ServerSelector.cs [Design]",
-              "RelativeToolTip": "ServerSelector.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T11:13:42.106Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ServerSelector.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\ServerSelector.cs",
+              "RelativeDocumentMoniker": "ServerSelector.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\ServerSelector.cs",
+              "RelativeToolTip": "ServerSelector.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T11:13:43.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ServerSelector.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\ServerSelector.cs",
+              "RelativeDocumentMoniker": "ServerSelector.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\ServerSelector.cs [Design]",
+              "RelativeToolTip": "ServerSelector.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T10:27:08.373Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Login.cs",
               "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Login.cs",
               "RelativeToolTip": "Login.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwCAAAAAqAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-24T09:04:15.468Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Login.cs [Design]",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\Login.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Login.cs",
               "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\Login.cs [Design]",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Login.cs [Design]",
               "RelativeToolTip": "Login.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T09:04:13.731Z"
+              "WhenOpened": "2024-05-26T10:27:09.196Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Register.cs",
+              "RelativeDocumentMoniker": "Register.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Register.cs",
+              "RelativeToolTip": "Register.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T19:20:30.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Register.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Register.cs",
+              "RelativeDocumentMoniker": "Register.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\Register.cs [Design]",
+              "RelativeToolTip": "Register.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T10:27:08.518Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MainProgram.cs",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\MainProgram.cs",
               "RelativeDocumentMoniker": "MainProgram.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\MainProgram.cs",
               "RelativeToolTip": "MainProgram.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAgwFwAAAA2AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T07:56:23.172Z"
+              "WhenOpened": "2024-05-24T07:56:23.172Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "MainProgram.cs [Design]",
-              "DocumentMoniker": "C:\\Programming\\network-or-something\\client\\MainProgram.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\MainProgram.cs",
               "RelativeDocumentMoniker": "MainProgram.cs",
-              "ToolTip": "C:\\Programming\\network-or-something\\client\\MainProgram.cs [Design]",
+              "ToolTip": "C:\\Users\\Reza\\Programming\\school-stuff\\network-or-something\\client\\MainProgram.cs [Design]",
               "RelativeToolTip": "MainProgram.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T07:56:20.414Z"
+              "WhenOpened": "2024-05-24T07:56:20.414Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
